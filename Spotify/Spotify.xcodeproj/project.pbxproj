@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		00B42BF72874B8B4000D90A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42BF62874B8B4000D90A8 /* AppDelegate.swift */; };
 		00B42BF92874B8B4000D90A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42BF82874B8B4000D90A8 /* SceneDelegate.swift */; };
-		00B42BFB2874B8B4000D90A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42BFA2874B8B4000D90A8 /* HomeViewController.swift */; };
 		00B42BFE2874B8B4000D90A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B42BFC2874B8B4000D90A8 /* Main.storyboard */; };
 		00B42C002874B8B5000D90A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00B42BFF2874B8B5000D90A8 /* Assets.xcassets */; };
 		00B42C032874B8B5000D90A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B42C012874B8B5000D90A8 /* LaunchScreen.storyboard */; };
-		00B42C102874BC06000D90A8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C0F2874BC06000D90A8 /* TabBarViewController.swift */; };
 		00B42C122874BC2F000D90A8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C112874BC2F000D90A8 /* SearchViewController.swift */; };
 		00B42C142874BC42000D90A8 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C132874BC42000D90A8 /* LibraryViewController.swift */; };
 		00B42C162874BEB8000D90A8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C152874BEB8000D90A8 /* AuthViewController.swift */; };
@@ -23,6 +21,8 @@
 		00B42C1F2874BF5D000D90A8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C1E2874BF5D000D90A8 /* PlayerViewController.swift */; };
 		00B42C212874BFC6000D90A8 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C202874BFC6000D90A8 /* PlaylistViewController.swift */; };
 		00B42C232874BFE2000D90A8 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C222874BFE2000D90A8 /* SearchResultsViewController.swift */; };
+		00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42BFA2874B8B4000D90A8 /* HomeViewController.swift */; };
+		00B42C272874D0A9000D90A8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C0F2874BC06000D90A8 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,8 +131,8 @@
 		00B42C1D2874BF31000D90A8 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				00B42BFA2874B8B4000D90A8 /* HomeViewController.swift */,
 				00B42C0F2874BC06000D90A8 /* TabBarViewController.swift */,
+				00B42BFA2874B8B4000D90A8 /* HomeViewController.swift */,
 				00B42C112874BC2F000D90A8 /* SearchViewController.swift */,
 				00B42C132874BC42000D90A8 /* LibraryViewController.swift */,
 			);
@@ -228,14 +228,14 @@
 				00B42C232874BFE2000D90A8 /* SearchResultsViewController.swift in Sources */,
 				00B42C182874BEEE000D90A8 /* WelcomeViewController.swift in Sources */,
 				00B42C1C2874BF0D000D90A8 /* ProfileViewController.swift in Sources */,
-				00B42C102874BC06000D90A8 /* TabBarViewController.swift in Sources */,
-				00B42BFB2874B8B4000D90A8 /* HomeViewController.swift in Sources */,
 				00B42C162874BEB8000D90A8 /* AuthViewController.swift in Sources */,
 				00B42BF72874B8B4000D90A8 /* AppDelegate.swift in Sources */,
 				00B42C142874BC42000D90A8 /* LibraryViewController.swift in Sources */,
 				00B42C212874BFC6000D90A8 /* PlaylistViewController.swift in Sources */,
 				00B42BF92874B8B4000D90A8 /* SceneDelegate.swift in Sources */,
 				00B42C1F2874BF5D000D90A8 /* PlayerViewController.swift in Sources */,
+				00B42C272874D0A9000D90A8 /* TabBarViewController.swift in Sources */,
+				00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */,
 				00B42C1A2874BF01000D90A8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
