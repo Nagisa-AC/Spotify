@@ -23,6 +23,7 @@
 		00B42C232874BFE2000D90A8 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C222874BFE2000D90A8 /* SearchResultsViewController.swift */; };
 		00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42BFA2874B8B4000D90A8 /* HomeViewController.swift */; };
 		00B42C272874D0A9000D90A8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C0F2874BC06000D90A8 /* TabBarViewController.swift */; };
+		00B42C2B2875FE33000D90A8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C2A2875FE33000D90A8 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		00B42C1E2874BF5D000D90A8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		00B42C202874BFC6000D90A8 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		00B42C222874BFE2000D90A8 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		00B42C2A2875FE33000D90A8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		00B42BF52874B8B4000D90A8 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				00B42C282875FDA1000D90A8 /* Managers */,
 				00B42C0E2874B9EC000D90A8 /* Resources  */,
 				00B42C0D2874B951000D90A8 /* ViewModels */,
 				00B42C0C2874B949000D90A8 /* Views */,
@@ -153,6 +156,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		00B42C282875FDA1000D90A8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				00B42C2A2875FE33000D90A8 /* AuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B42C122874BC2F000D90A8 /* SearchViewController.swift in Sources */,
+				00B42C2B2875FE33000D90A8 /* AuthManager.swift in Sources */,
 				00B42C232874BFE2000D90A8 /* SearchResultsViewController.swift in Sources */,
 				00B42C182874BEEE000D90A8 /* WelcomeViewController.swift in Sources */,
 				00B42C1C2874BF0D000D90A8 /* ProfileViewController.swift in Sources */,

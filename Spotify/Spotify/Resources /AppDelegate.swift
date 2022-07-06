@@ -15,9 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // allowing TabBarViewController to display when app first opens
-        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = TabBarViewController()
+        
+        if AuthManager.shared.isSignedIn {
+            window.rootViewController = TabBarViewController()
+        }
+        else {
+            let NavigationVC = UINavigationController(rootViewController: WelcomeViewController())
+            NavigationVC.navigationBar.prefersLargeTitles = true
+            NavigationVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+            window.rootViewController = NavigationVC
+        }
+        
         window.makeKeyAndVisible()
         self.window = window
         
