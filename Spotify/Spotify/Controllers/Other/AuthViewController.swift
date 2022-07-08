@@ -18,6 +18,8 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
         return webView
     }()
     
+    public var CompletionHandler: ((Bool) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign In"
