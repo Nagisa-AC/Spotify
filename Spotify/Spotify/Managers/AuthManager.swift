@@ -52,6 +52,12 @@ final class AuthManager {
         code: String,
         completion: @escaping (Bool) -> Void) {
         // get token
+            guard let url = URL(string: Constants.tokenAPIURL) else {
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
     }
     
     public func refreshAccessToken() {
