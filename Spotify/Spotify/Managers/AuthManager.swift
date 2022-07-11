@@ -48,17 +48,51 @@ final class AuthManager {
         return false
     }
     
+    /**
+    When user authorizes their account an authorization code is generated.
+    Spotify allows you to exchange a code for a access token. The purpose
+    of this method is to exchange the authorization code for an access token.
+    Reequired parameters: grant_type, auth code, and redirect_url.
+     */
     public func exchangeCodeForToken(
         code: String,
-        completion: @escaping (Bool) -> Void) {
-        // get token
-            guard let url = URL(string: Constants.tokenAPIURL) else {
+        completion: @escaping ((Bool) -> Void)
+    ) {
+        guard let url = URL(string: Constants.tokenAPIURL) else {
+            return
+        }
+        
+        var components = URLComponents()
+        components.queryItems = [
+            URLQueryItem(name: "grant_type", value: "authorization code"),
+            URLQueryItem(name: "code", value: code),
+            URLQueryItem(name: "redirect_uri", value: "https://www.google.com")
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data,
+                  error == nil else {
+                completion(false)
                 return
             }
             
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
+            // desearlize json
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("Success \(json)")
+            }
+            catch {
+                print(error.localizedDescription)
+                completion(false)
+            }
+            
+        }
     }
+    
+    
     
     public func refreshAccessToken() {
         
