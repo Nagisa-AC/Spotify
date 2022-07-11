@@ -13,6 +13,7 @@ final class AuthManager {
     struct Constants {
         static let clientID = "ffa53eec93614856b4c5b81ecd412261"
         static let clientSecret = "47326f29745b42c48fa575274f186b03"
+        static let tokenAPIURL = "https://accounts.spotify.com/api/token" 
     }
     
     private init() {}
@@ -45,5 +46,19 @@ final class AuthManager {
     
     private var shouldRefreshToken: Bool {
         return false
+    }
+    
+    public func exchangeCodeForToken(
+        code: String,
+        completion: @escaping (Bool) -> Void) {
+        // get token
+    }
+    
+    public func refreshAccessToken() {
+        
+    }
+    
+    private func cacheToken() {
+        
     }
 }
