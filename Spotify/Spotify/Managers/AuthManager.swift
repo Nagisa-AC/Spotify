@@ -52,8 +52,11 @@ final class AuthManager {
     When user authorizes their account an authorization code is generated.
     Spotify allows you to exchange a code for a access token. The purpose
     of this method is to exchange the authorization code for an access token.
-    Reequired parameters: grant_type, auth code, and redirect_url.
+    Reequired body parameters: grant_type, auth code, and redirect_url.
+    Required header parameter: Authorization (clientID and client Secret)
+    https://developer.spotify.com/documentation/general/guides/authorization/code-flow/
      */
+    
     public func exchangeCodeForToken(
         code: String,
         completion: @escaping ((Bool) -> Void)
@@ -64,13 +67,25 @@ final class AuthManager {
         
         var components = URLComponents()
         components.queryItems = [
-            URLQueryItem(name: "grant_type", value: "authorization code"),
+            URLQueryItem(name: "grant_type", value: "authorization_code"),
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "redirect_uri", value: "https://www.google.com")
         ]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = components.query?.data(using: .utf8)
+        
+        // HTTP Auth header
+        let basicToken = Constants.clientID+":"+Constants.clientSecret
+        let data = basicToken.data(using: .utf8)
+        guard let base64String = data?.base64EncodedString() else {
+            print("base64 failure")
+            completion(false)
+            return
+        }
+        request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data,
@@ -90,6 +105,7 @@ final class AuthManager {
             }
             
         }
+        task.resume()
     }
     
     

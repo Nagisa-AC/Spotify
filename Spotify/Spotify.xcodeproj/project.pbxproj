@@ -24,6 +24,7 @@
 		00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42BFA2874B8B4000D90A8 /* HomeViewController.swift */; };
 		00B42C272874D0A9000D90A8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C0F2874BC06000D90A8 /* TabBarViewController.swift */; };
 		00B42C2B2875FE33000D90A8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C2A2875FE33000D90A8 /* AuthManager.swift */; };
+		00B42C2D287CD9D5000D90A8 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C2C287CD9D5000D90A8 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		00B42C202874BFC6000D90A8 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		00B42C222874BFE2000D90A8 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		00B42C2A2875FE33000D90A8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		00B42C2C287CD9D5000D90A8 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		00B42C0B2874B941000D90A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00B42C2C287CD9D5000D90A8 /* AuthResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				00B42C1F2874BF5D000D90A8 /* PlayerViewController.swift in Sources */,
 				00B42C272874D0A9000D90A8 /* TabBarViewController.swift in Sources */,
 				00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */,
+				00B42C2D287CD9D5000D90A8 /* AuthResponse.swift in Sources */,
 				00B42C1A2874BF01000D90A8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
