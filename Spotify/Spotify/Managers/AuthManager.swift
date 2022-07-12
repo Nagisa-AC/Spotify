@@ -29,23 +29,28 @@ final class AuthManager {
     
     
     var isSignedIn: Bool {
-        return false
+        return accessToken != nil
     }
     
     private var accessToken: String? {
-        return nil
+        return UserDefaults.standard.string(forKey: "access_token")
     }
     
     private var refreshToken: String? {
-        return nil
+        return UserDefaults.standard.string(forKey: "refresh")
     }
     
-    private var tokenExpiration: Date? {
-        return nil
+    private var tokenExpirationDate: Date? {
+        return UserDefaults.standard.object(forKey: "expirationDate") as? Date
     }
     
     private var shouldRefreshToken: Bool {
-        return false
+        guard let expirationDate = tokenExpirationDate else {
+            return false 
+        }
+        let currentDate = Date()
+        let fiveMiinutes: TimeInterval = 300
+        return currentDate.addingTimeInterval(fiveMiinutes) >= expirationDate
     }
     
     /**
