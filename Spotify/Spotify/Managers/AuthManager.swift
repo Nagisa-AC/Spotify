@@ -9,6 +9,8 @@ import Foundation
 
 final class AuthManager {
     static let shared = AuthManager()
+    
+    private var refreshingToken = false
         
     struct Constants {
         static let clientID = "ffa53eec93614856b4c5b81ecd412261"
@@ -70,7 +72,7 @@ final class AuthManager {
         guard let url = URL(string: Constants.tokenAPIURL) else {
             return
         }
-        
+                
         var components = URLComponents()
         components.queryItems = [
             URLQueryItem(name: "grant_type", value: "authorization_code"),
@@ -117,9 +119,28 @@ final class AuthManager {
         task.resume()
     }
     
+    public func withValidToken(completion: @escaping (String) -> Void) {
+        if shouldRefreshToken {
+            refreshIfNeeded { [weak self] success in
+                if success {
+                    if let token = self?.accessToken, success {
+                        completion(token)
+                    }
+                }
+            }
+        }
+        else if let token = accessToken {
+            completion(token)
+        }
+    }
+    
     
     
     public func refreshIfNeeded(completion: @escaping (Bool) -> Void) {
+        guard !refreshingToken else {
+            return 
+        }
+        
 //        guard shouldRefreshToken else {
 //            completion(true)
 //            return
@@ -132,6 +153,8 @@ final class AuthManager {
         guard let url = URL(string: Constants.tokenAPIURL) else {
             return
         }
+        
+        refreshingToken = true
         
         var components = URLComponents()
         components.queryItems = [
