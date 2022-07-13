@@ -13,6 +13,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Dark and Light mode support
         view.backgroundColor = .systemBackground
+        title = "Home"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
     }
+    
+//    @objc func didTapSettings() {
+//        let viewController
+//    }
 }
 
