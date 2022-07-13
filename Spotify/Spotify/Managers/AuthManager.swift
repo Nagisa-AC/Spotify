@@ -37,7 +37,7 @@ final class AuthManager {
     }
     
     private var refreshToken: String? {
-        return UserDefaults.standard.string(forKey: "refresh")
+        return UserDefaults.standard.string(forKey: "refresh_token")
     }
     
     private var tokenExpirationDate: Date? {
@@ -101,9 +101,11 @@ final class AuthManager {
             
             // desearlize json
             do {
-                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
-                self.cacheToken(result: result)
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 completion(true)
+//                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
+//                self.cacheToken(result: result)
+//                completion(true)
             }
             catch {
                 print(error.localizedDescription)
