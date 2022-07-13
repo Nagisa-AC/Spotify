@@ -13,7 +13,9 @@ final class AuthManager {
     struct Constants {
         static let clientID = "ffa53eec93614856b4c5b81ecd412261"
         static let clientSecret = "47326f29745b42c48fa575274f186b03"
-        static let tokenAPIURL = "https://accounts.spotify.com/api/token" 
+        static let tokenAPIURL = "https://accounts.spotify.com/api/token"
+        static let redirectURI = "https://www.google.com"
+        static let scopes = "user-read-private"
     }
     
     private init() {}
@@ -21,8 +23,7 @@ final class AuthManager {
     public var signInURL: URL? {
         let baseURL = "https://accounts.spotify.com/authorize"
         let redirectURI = "https://www.google.com"
-        let scopes = "user-read-private"
-        let string = "\(baseURL)?response_type=code&client_id=\(Constants.clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)&show_dialog=TRUE"
+        let string = "\(baseURL)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
         return URL(string: string)
     }
     
@@ -74,7 +75,7 @@ final class AuthManager {
         components.queryItems = [
             URLQueryItem(name: "grant_type", value: "authorization_code"),
             URLQueryItem(name: "code", value: code),
-            URLQueryItem(name: "redirect_uri", value: "https://www.google.com")
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI)
         ]
         
         var request = URLRequest(url: url)
@@ -119,10 +120,10 @@ final class AuthManager {
     
     
     public func refreshIfNeeded(completion: @escaping (Bool) -> Void) {
-        guard shouldRefreshToken else {
-            completion(true)
-            return
-        }
+//        guard shouldRefreshToken else {
+//            completion(true)
+//            return
+//        }
         guard let refreshToken = self.refreshToken else {
             return
         }
@@ -182,7 +183,7 @@ final class AuthManager {
         UserDefaults.standard.setValue(result.access_token,
                                        forKey: "access_token")
         if let refresh_token = result.refresh_token {
-            UserDefaults.standard.setValue(result.access_token,
+            UserDefaults.standard.setValue(result.refresh_token,
                                            forKey: "refresh_token")
         }
         
