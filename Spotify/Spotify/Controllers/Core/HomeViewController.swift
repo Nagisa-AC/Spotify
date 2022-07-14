@@ -17,9 +17,16 @@ class HomeViewController: UIViewController {
     private var collectionView: UICollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-            return Self.createSectionLayout(section: sectionIndex)
+            return HomeViewController.createSectionLayout(section: sectionIndex)
         }
     )
+    
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.tintColor = .label
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +35,14 @@ class HomeViewController: UIViewController {
         title = "Home"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
         
-        
+        view.addSubview(spinner)
         configureCollectionView()
         fetchData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
     }
     
     private func configureCollectionView() {
@@ -78,4 +90,29 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = .systemGreen
+        return cell
+    }
+}
+
+//extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 20
+//    }
+//
+//}
+//func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+//    cell.backgroundColor = .systemGreen
+//    return cell
+//}
 
