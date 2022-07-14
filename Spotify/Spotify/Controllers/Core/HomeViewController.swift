@@ -35,8 +35,8 @@ class HomeViewController: UIViewController {
         title = "Home"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
         
-        view.addSubview(spinner)
         configureCollectionView()
+        view.addSubview(spinner)
         fetchData()
     }
     
@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(1.0)))
         
-        // breaking cell into subcells 
+        // breaking cell into subcells
         item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
             
         let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
