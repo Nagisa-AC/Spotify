@@ -9,13 +9,17 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-//    private var collectionView: UICollectionView = UICollectionView(
-//        frame: .zero,
-//        collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-//            return self.createSectionLayout(section: sectionIndex)
-//
-//        }
-//    )
+//    let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
+//        return self().createSectionLayout(section: sectionIndex)
+//    }
+//    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout )
+    
+    private var collectionView: UICollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
+            return Self.createSectionLayout(section: sectionIndex)
+        }
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +28,22 @@ class HomeViewController: UIViewController {
         title = "Home"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
         
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-            return self.createSectionLayout(section: sectionIndex)
-        }
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout )
         
+        configureCollectionView()
         fetchData()
     }
     
-    private func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+    private func configureCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.register(UICollectionViewCell.self,
+                                forCellWithReuseIdentifier: "cell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .systemBackground
+    }
+    
+    
+    private static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(1.0)))
@@ -40,12 +51,12 @@ class HomeViewController: UIViewController {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(120)), subitem: item, count: 1)
+        
         let section = NSCollectionLayoutSection(group: group)
         
         return section
     }
-    
-    
+     
     
     private func fetchData() {
         APICaller.shared.getFeaturedPlaylists { _ in
