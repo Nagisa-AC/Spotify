@@ -79,6 +79,7 @@ final class APICaller {
             var request = URLRequest(url: apiURL)
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             request.httpMethod = type.rawValue
+            request.timeoutInterval = 30
             completion(request)
         }
     }
