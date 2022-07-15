@@ -157,31 +157,23 @@ class HomeViewController: UIViewController {
         // new releases
         // featured playlists
         // recommended tracks
-        
-//        APICaller.shared.getRecommendedGenres { result in
-//            switch result {
-//            case .success(let model):
-//                let genres = model.genres
-//                var seeds = Set<String>()
-//                while seeds.count < 5 {
-//                    if let random = genres.randomElement() {
-//                        seeds.insert(random)
-//                    }
-//                }
-//            }
-//        }
-        
-        
-        APICaller.shared.getFeaturedPlaylists { _ in
-            
+                
+        APICaller.shared.getRecommendedGenres { result in
+            switch result {
+            case .success(let model):
+                let genres = model.genres
+                var seeds = Set<String>()
+                while seeds.count < 5 {
+                    if let random = genres.randomElement() {
+                        seeds.insert(random)
+                    }
+                }
+                APICaller.shared.getRecommendations(genres: seeds) { _ in 
+                    
+                }
+            case .failure(let error): break
+            }
         }
-        
-//        APICaller.shared.getNewReleases { result in
-//            switch result {
-//            case .success(let model): break
-//            case .failure(let error): break
-//            }
-//        }
     }
     
     @objc func didTapSettings() {
