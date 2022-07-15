@@ -31,6 +31,7 @@
 		00B42C35288094B3000D90A8 /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C34288094B3000D90A8 /* APIImage.swift */; };
 		00B42C3728809662000D90A8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C3628809662000D90A8 /* Artist.swift */; };
 		00B42C392881D30F000D90A8 /* FeaturedPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C382881D30F000D90A8 /* FeaturedPlaylistResponse.swift */; };
+		00B42C3B2881D9D0000D90A8 /* RecommendedGenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C3A2881D9D0000D90A8 /* RecommendedGenresResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		00B42C34288094B3000D90A8 /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		00B42C3628809662000D90A8 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		00B42C382881D30F000D90A8 /* FeaturedPlaylistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistResponse.swift; sourceTree = "<group>"; };
+		00B42C3A2881D9D0000D90A8 /* RecommendedGenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedGenresResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				00B42C34288094B3000D90A8 /* APIImage.swift */,
 				00B42C3628809662000D90A8 /* Artist.swift */,
 				00B42C382881D30F000D90A8 /* FeaturedPlaylistResponse.swift */,
+				00B42C3A2881D9D0000D90A8 /* RecommendedGenresResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				00B42C122874BC2F000D90A8 /* SearchViewController.swift in Sources */,
 				00B42C2B2875FE33000D90A8 /* AuthManager.swift in Sources */,
+				00B42C3B2881D9D0000D90A8 /* RecommendedGenresResponse.swift in Sources */,
 				00B42C232874BFE2000D90A8 /* SearchResultsViewController.swift in Sources */,
 				00B42C182874BEEE000D90A8 /* WelcomeViewController.swift in Sources */,
 				00B42C1C2874BF0D000D90A8 /* ProfileViewController.swift in Sources */,
