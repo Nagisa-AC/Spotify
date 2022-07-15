@@ -55,6 +55,12 @@ class HomeViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.register(UICollectionViewCell.self,
                                 forCellWithReuseIdentifier: "cell")
+        collectionView.register(NewReleaseCollectionViewCell.self,
+                                forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
+        collectionView.register(FeaturedPlaylistCollectionViewCell.self,
+                                forCellWithReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier)
+        collectionView.register(RecommendedTrackCollectionViewCell.self,
+                                forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
