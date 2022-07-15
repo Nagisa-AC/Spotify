@@ -88,24 +88,23 @@ class HomeViewController: UIViewController {
             
         case 1:
             let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(1.0)))
+                widthDimension: .absolute(250),
+                heightDimension: .absolute(250)))
             
             // breaking cell into subcells
             item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
             
             // vertical group inside horizontl group
-            let vertivalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(390)), subitem: item, count: 3)
+            let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(200),
+                heightDimension: .absolute(400)), subitem: item, count: 2)
             
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.9),
-                heightDimension: .absolute(390)), subitem: vertivalGroup, count: 1)
+                widthDimension: .absolute(200),
+                heightDimension: .absolute(400)), subitem: verticalGroup, count: 1)
             
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .continuous
-            
             return section
             
             
@@ -118,16 +117,15 @@ class HomeViewController: UIViewController {
             item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
             
             // vertical group inside horizontl group
-            let vertivalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(390)), subitem: item, count: 3)
+//            let vertivalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
+//                widthDimension: .fractionalWidth(1.0),
+//                heightDimension: .absolute(390)), subitem: item, count: 3)
             
-            let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.9),
-                heightDimension: .absolute(390)), subitem: vertivalGroup, count: 1)
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(80)), subitem: item, count: 1)
             
-            let section = NSCollectionLayoutSection(group: horizontalGroup)
-            section.orthogonalScrollingBehavior = .continuous
+            let section = NSCollectionLayoutSection(group: group)
             
             return section
             
