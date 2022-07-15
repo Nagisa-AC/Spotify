@@ -74,6 +74,11 @@ class HomeViewController: UIViewController {
      
     
     private func fetchData() {
+        // new releases
+        // featured playlists
+        // recommended tracks
+        
+        
         APICaller.shared.getFeaturedPlaylists { _ in
             
         }

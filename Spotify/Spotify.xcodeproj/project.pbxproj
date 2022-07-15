@@ -30,6 +30,7 @@
 		00B42C3328808CFC000D90A8 /* NewReleasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C3228808CFC000D90A8 /* NewReleasesResponse.swift */; };
 		00B42C35288094B3000D90A8 /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C34288094B3000D90A8 /* APIImage.swift */; };
 		00B42C3728809662000D90A8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C3628809662000D90A8 /* Artist.swift */; };
+		00B42C392881D30F000D90A8 /* FeaturedPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42C382881D30F000D90A8 /* FeaturedPlaylistResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		00B42C3228808CFC000D90A8 /* NewReleasesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesResponse.swift; sourceTree = "<group>"; };
 		00B42C34288094B3000D90A8 /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		00B42C3628809662000D90A8 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		00B42C382881D30F000D90A8 /* FeaturedPlaylistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				00B42C3228808CFC000D90A8 /* NewReleasesResponse.swift */,
 				00B42C34288094B3000D90A8 /* APIImage.swift */,
 				00B42C3628809662000D90A8 /* Artist.swift */,
+				00B42C382881D30F000D90A8 /* FeaturedPlaylistResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				00B42C1A2874BF01000D90A8 /* SettingsViewController.swift in Sources */,
 				00B42C3728809662000D90A8 /* Artist.swift in Sources */,
 				00B42C31287F4227000D90A8 /* UserProfile.swift in Sources */,
+				00B42C392881D30F000D90A8 /* FeaturedPlaylistResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
