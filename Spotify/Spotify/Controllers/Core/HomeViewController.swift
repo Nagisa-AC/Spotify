@@ -8,9 +8,9 @@
 import UIKit
 
 enum BrowseSectionType {
-    case newReleases
-    case featuredPlaylist
-    case recommendedTracks
+    case newReleases(viewModel: [NewReleaseCollectionViewCell])
+    case featuredPlaylist(viewModel: [NewReleaseCollectionViewCell])
+    case recommendedTracks(viewModel: [NewReleaseCollectionViewCell])
 }
 
 class HomeViewController: UIViewController {
@@ -33,6 +33,8 @@ class HomeViewController: UIViewController {
         spinner.hidesWhenStopped = true
         return spinner
     }()
+    
+    private var section = [BrowseSectionType]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,8 +165,46 @@ class HomeViewController: UIViewController {
         // new releases
         // featured playlists
         // recommended tracks
+        
+        let group = DispatchGroup()
+        group.enter()
+        group.enter()
+        group.enter()
+        
+        var newReleases: NewReleasesResponse?
+        var FeaturedPlaylist: FeaturedPlaylistResponse
+        var recomendations: RecommendedGenresResponse?
+        
+        
+        APICaller.shared.getNewReleases { result in
+            defer {
+                group.leave()
+            }
+            switch result {
+            case .success(let model):
+                newReleases = model
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        APICaller.shared.getFeaturedPlaylists { result in
+            defer {
+                group.leave()
+            }
+            switch result {
+            case .success(let model):
+                FeaturedPlaylist = model
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
                 
         APICaller.shared.getRecommendedGenres { result in
+            defer {
+                group.leave()
+            }
             switch result {
             case .success(let model):
                 let genres = model.genres
@@ -174,12 +214,28 @@ class HomeViewController: UIViewController {
                         seeds.insert(random)
                     }
                 }
-                APICaller.shared.getRecommendations(genres: seeds) { _ in 
-                    
+                APICaller.shared.getRecommendations(genres: seeds) { recommendedResults in
+                    defer {
+                        group.leave()
+                    }
+                    switch recommendedResults {
+                    case .success(let model):
+                        recomendations = model 
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
                 }
             case .failure(let error): break
             }
         }
+        
+        group.notify(queue: .main) {
+            
+        }
+        
+        section.append(.newReleases(viewModel: []))
+        section.append(.featuredPlaylist(viewModel: []))
+        section.append(.recommendedTracks(viewModel: []))
     }
     
     @objc func didTapSettings() {
@@ -197,7 +253,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return section.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
