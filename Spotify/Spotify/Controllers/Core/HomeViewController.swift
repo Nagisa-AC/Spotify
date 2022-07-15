@@ -78,6 +78,10 @@ class HomeViewController: UIViewController {
         // featured playlists
         // recommended tracks
         
+        APICaller.shared.getRecommendedGenres { _ in 
+            
+        }
+        
         
         APICaller.shared.getFeaturedPlaylists { _ in
             
