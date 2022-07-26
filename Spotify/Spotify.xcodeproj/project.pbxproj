@@ -41,6 +41,7 @@
 		00B42E62288F28EC000D90A8 /* RecommendedTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E61288F28EC000D90A8 /* RecommendedTrackCellViewModel.swift */; };
 		00B42E64288F2A52000D90A8 /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E63288F2A52000D90A8 /* RecommendationsResponse.swift */; };
 		00B42E662890697D000D90A8 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E652890697D000D90A8 /* AlbumViewController.swift */; };
+		00B42E6828907A7F000D90A8 /* AlbumDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E6728907A7F000D90A8 /* AlbumDetailsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		00B42E61288F28EC000D90A8 /* RecommendedTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCellViewModel.swift; sourceTree = "<group>"; };
 		00B42E63288F2A52000D90A8 /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
 		00B42E652890697D000D90A8 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		00B42E6728907A7F000D90A8 /* AlbumDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				00B42C3A2881D9D0000D90A8 /* RecommendedGenresResponse.swift */,
 				00B42E5D288F1C54000D90A8 /* AudioTrack.swift */,
 				00B42E63288F2A52000D90A8 /* RecommendationsResponse.swift */,
+				00B42E6728907A7F000D90A8 /* AlbumDetailsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */,
 				00B42C2D287CD9D5000D90A8 /* AuthResponse.swift in Sources */,
 				00B42C1A2874BF01000D90A8 /* SettingsViewController.swift in Sources */,
+				00B42E6828907A7F000D90A8 /* AlbumDetailsResponse.swift in Sources */,
 				00B42C3728809662000D90A8 /* Artist.swift in Sources */,
 				00B42C31287F4227000D90A8 /* UserProfile.swift in Sources */,
 				00B42C392881D30F000D90A8 /* FeaturedPlaylistResponse.swift in Sources */,
