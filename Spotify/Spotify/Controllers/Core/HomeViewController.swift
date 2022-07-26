@@ -8,12 +8,27 @@
 import UIKit
 
 enum BrowseSectionType {
-    case newReleases(viewModel: [NewReleaseCollectionViewCell])
-    case featuredPlaylist(viewModel: [NewReleaseCollectionViewCell])
-    case recommendedTracks(viewModel: [NewReleaseCollectionViewCell])
+    case newReleases(viewModels: [NewReleasesCellViewModel]) // 1
+    case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) // 2
+    case recommendedTracks(viewModels: [RecommendedTrackCellViewModel]) // 3
+
+    var title: String {
+        switch self {
+        case .newReleases:
+            return "New Released Albums"
+        case .featuredPlaylists:
+            return "Featured Playlists"
+        case .recommendedTracks:
+            return "Recommended"
+        }
+    }
 }
 
 class HomeViewController: UIViewController {
+    
+    private var newAlbums: [Album] = []
+    private var playlists: [Playlist] = []
+    private var tracks: [AudioTrack] = []
     
 //    let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
 //        return self().createSectionLayout(section: sectionIndex)
@@ -67,6 +82,31 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
     }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let section = section[indexPath.section]
+        switch section {
+        case .featuredPlaylists:
+            let playlist = playlists[indexPath.row]
+            let vc = PlaylistViewController(playlist: playlist)
+            vc.title = playlist.name
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        case .newReleases:
+            let album = newAlbums[indexPath.row]
+            let vc = AlbumViewController(album: album)
+            vc.title = album.name
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        case .recommendedTracks:
+            break 
+        }
+    }
+    
+    
     
     
     private static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
@@ -172,8 +212,8 @@ class HomeViewController: UIViewController {
         group.enter()
         
         var newReleases: NewReleasesResponse?
-        var FeaturedPlaylist: FeaturedPlaylistResponse
-        var recomendations: RecommendedGenresResponse?
+        var FeaturedPlaylist: FeaturedPlaylistResponse?
+        var recommendations: RecommendationsResponse?
         
         
         APICaller.shared.getNewReleases { result in
@@ -202,9 +242,6 @@ class HomeViewController: UIViewController {
         }
                 
         APICaller.shared.getRecommendedGenres { result in
-            defer {
-                group.leave()
-            }
             switch result {
             case .success(let model):
                 let genres = model.genres
@@ -214,29 +251,79 @@ class HomeViewController: UIViewController {
                         seeds.insert(random)
                     }
                 }
-                APICaller.shared.getRecommendations(genres: seeds) { recommendedResults in
+
+                APICaller.shared.getRecommendations(genres: seeds) { recommendedResult in
                     defer {
                         group.leave()
                     }
-                    switch recommendedResults {
+
+                    switch recommendedResult {
                     case .success(let model):
-                        recomendations = model 
+                        return
+                        //recommendations = model
+
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
                 }
-            case .failure(let error): break
+
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
         
         group.notify(queue: .main) {
-            
+            guard let newAlbums = newReleases?.albums.items,
+                  let playlists = FeaturedPlaylist?.playlists.items,
+                  let tracks = recommendations?.tracks else {
+                fatalError("Models are nil")
+            }
+            self.configureModels(
+                newAlbums: newAlbums,
+                playlists: playlists,
+                tracks: tracks
+            )
         }
-        
-        section.append(.newReleases(viewModel: []))
-        section.append(.featuredPlaylist(viewModel: []))
-        section.append(.recommendedTracks(viewModel: []))
     }
+    
+    
+    private func configureModels(
+        newAlbums: [Album],
+        playlists: [Playlist],
+        tracks: [AudioTrack]
+    ) {
+        self.newAlbums = newAlbums
+        self.playlists = playlists
+        self.tracks = tracks
+        section.append(.newReleases(viewModels: newAlbums.compactMap({
+            return NewReleasesCellViewModel(
+                name: $0.name,
+                artworkURL: URL(string: $0.images.first?.url ?? ""),
+                numberOfTracks: $0.total_tracks,
+                artistName: $0.artists.first?.name ?? "-"
+            )
+        })))
+
+        section.append(.featuredPlaylists(viewModels: playlists.compactMap({
+            return FeaturedPlaylistCellViewModel(
+                name: $0.name,
+                artworkURL: URL(string: $0.images.first?.url ?? ""),
+                creatorName: $0.owner.display_name
+            )
+        })))
+
+        section.append(.recommendedTracks(viewModels: tracks.compactMap({
+            return RecommendedTrackCellViewModel(
+                name: $0.name,
+                artistName: $0.artists.first?.name ?? "-",
+                artworkURL: URL(string: $0.album?.images.first?.url ?? "")
+            )
+        })))
+
+        collectionView.reloadData()
+    }
+    
+    
     
     @objc func didTapSettings() {
         let viewController = ProfileViewController()

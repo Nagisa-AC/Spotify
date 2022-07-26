@@ -20,6 +20,16 @@ final class APICaller {
         case failedToGetData
     }
     
+    
+    public func getAlbumDetails(for album: Album, completion: @escaping (Result<String, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + ""), type: .GET) { 
+            
+        }
+    }
+    
+    
+    
+    
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
         createRequest(
             with: URL(string: Constants.baseAPIURL + "/me"),
