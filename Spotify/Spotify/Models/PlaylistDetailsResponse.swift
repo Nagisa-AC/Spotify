@@ -14,6 +14,13 @@ struct PlaylistDetailsResponse: Codable {
     let id: String
     let images: [APIImage]
     let name: String
-    let tracks: TracksResponse
+    let tracks: PlaylistsTracksResponse
 }
 
+struct PlaylistsTracksResponse: Codable {
+    let items: [PlaylistItem]
+}
+
+struct PlaylistItem: Codable {
+    let track: AudioTrack
+}
