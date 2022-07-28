@@ -36,6 +36,8 @@ class PlaylistViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    private var viewModels = [RecommendedTrackCollectionViewCell]()
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -46,17 +48,23 @@ class PlaylistViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(collectionView)
-        collectionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
+        collectionView.register(RecommendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        APICaller.shared.getPlaylistDetails(for: playlist) { result in
-            switch result {
-            case .success(let model):
-                break
-            case .failure(let error):
-                break
+        APICaller.shared.getPlaylistDetails(for: playlist) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let model):
+                    self?.viewModels = model.tracks.items.compactMap({
+                        RecommendedTrackCellViewModel(name: $0.track.name, artistName: $0.track.artists.first?.name ?? "-",
+                                                      artworkURL: URL(string: $0.track.album?.images.first?.url ?? ""))
+                    })
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
     }
@@ -74,7 +82,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return viewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
