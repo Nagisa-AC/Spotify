@@ -10,14 +10,25 @@ import UIKit
 class SearchViewController: UIViewController, UISearchResultsUpdating {
     
     let searchController: UISearchController = {
-        let results = UIViewController()
-        results.view.backgroundColor = .red
-        let vc = UISearchController(searchResultsController: results)
+        let vc = UISearchController(searchResultsController: SearchResultsViewController())
         vc.searchBar.placeholder = "Songs, Aritists, Albums"
         vc.searchBar.searchBarStyle = .minimal
         vc.definesPresentationContext = true
         return vc
     }()
+    
+    
+    private let collectionView: UICollectionView = UICollectionView(frame: .zero,
+                                                                    collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: {_, _ -> NSCollectionLayoutSection? in
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100)))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100)), subitems: [item, item])
+        
+        return NSCollectionLayoutSection(group: group)
+    }))
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +39,12 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text,
+        guard let resultController = searchController.searchResultsController as? SearchResultsViewController,
+              let query = searchController.searchBar.text,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return 
+            return
         }
     }
+    
+    
 }
