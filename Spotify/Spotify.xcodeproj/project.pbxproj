@@ -43,6 +43,7 @@
 		00B42E662890697D000D90A8 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E652890697D000D90A8 /* AlbumViewController.swift */; };
 		00B42E6828907A7F000D90A8 /* AlbumDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E6728907A7F000D90A8 /* AlbumDetailsResponse.swift */; };
 		00B42E6A2891A10C000D90A8 /* PlaylistDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E692891A10C000D90A8 /* PlaylistDetailsResponse.swift */; };
+		00B42E6C28930CE8000D90A8 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E6B28930CE8000D90A8 /* GenreCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		00B42E652890697D000D90A8 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		00B42E6728907A7F000D90A8 /* AlbumDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsResponse.swift; sourceTree = "<group>"; };
 		00B42E692891A10C000D90A8 /* PlaylistDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsResponse.swift; sourceTree = "<group>"; };
+		00B42E6B28930CE8000D90A8 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				00B42C422881F80A000D90A8 /* Browse */,
 				00B42C012874B8B5000D90A8 /* LaunchScreen.storyboard */,
+				00B42E6B28930CE8000D90A8 /* GenreCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				00B42C272874D0A9000D90A8 /* TabBarViewController.swift in Sources */,
 				00B42C262874CE5D000D90A8 /* HomeViewController.swift in Sources */,
 				00B42C2D287CD9D5000D90A8 /* AuthResponse.swift in Sources */,
+				00B42E6C28930CE8000D90A8 /* GenreCollectionViewCell.swift in Sources */,
 				00B42C1A2874BF01000D90A8 /* SettingsViewController.swift in Sources */,
 				00B42E6828907A7F000D90A8 /* AlbumDetailsResponse.swift in Sources */,
 				00B42E6A2891A10C000D90A8 /* PlaylistDetailsResponse.swift in Sources */,
