@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UISearchResultsUpdating {
     
     let searchController: UISearchController = {
         let results = UIViewController()
@@ -23,6 +23,14 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         // Dark and Light mode support
         view.backgroundColor = .systemBackground
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
-
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return 
+        }
+    }
 }

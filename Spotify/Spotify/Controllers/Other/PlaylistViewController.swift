@@ -53,20 +53,20 @@ class PlaylistViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        APICaller.shared.getPlaylistDetails(for: playlist) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let model):
-                    self?.viewModels = model.tracks.items.compactMap({
-                        RecommendedTrackCellViewModel(name: $0.track.name, artistName: $0.track.artists.first?.name ?? "-",
-                                                      artworkURL: URL(string: $0.track.album?.images.first?.url ?? ""))
-                    })
-                    self?.collectionView.reloadData()
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
+//        APICaller.shared.getPlaylistDetails(for: playlist) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let model):
+//                    self?.viewModels = model.tracks.items.compactMap({
+//                        RecommendedTrackCellViewModel(name: $0.track.name, artistName: $0.track.artists.first?.name ?? "-",
+//                                                      artworkURL: URL(string: $0.track.album?.images.first?.url ?? ""))
+//                    })
+//                    self?.collectionView.reloadData()
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
     }
     
     override func viewDidLayoutSubviews() {
