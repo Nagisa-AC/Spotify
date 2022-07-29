@@ -36,7 +36,18 @@ class GenreCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        label.text = nil
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        
+    }
+    
+    func configure(with title: String) {
+        label.text = title
     }
 }
