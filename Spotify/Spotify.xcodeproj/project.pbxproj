@@ -49,6 +49,7 @@
 		00B42E73289450AB000D90A8 /* SearchResultSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E72289450AB000D90A8 /* SearchResultSubtitleTableViewCell.swift */; };
 		00B42E7628945111000D90A8 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00B42E7528945111000D90A8 /* SDWebImageSwiftUI */; };
 		00B42E792896FB99000D90A8 /* PlaybackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E782896FB99000D90A8 /* PlaybackPresenter.swift */; };
+		00B42E7B2896FCE8000D90A8 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E7A2896FCE8000D90A8 /* PlayerControlsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		00B42E6F28944ECE000D90A8 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		00B42E72289450AB000D90A8 /* SearchResultSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		00B42E782896FB99000D90A8 /* PlaybackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPresenter.swift; sourceTree = "<group>"; };
+		00B42E7A2896FCE8000D90A8 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				00B42C422881F80A000D90A8 /* Browse */,
 				00B42C012874B8B5000D90A8 /* LaunchScreen.storyboard */,
 				00B42E6B28930CE8000D90A8 /* GenreCollectionViewCell.swift */,
+				00B42E7A2896FCE8000D90A8 /* PlayerControlsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				00B42E792896FB99000D90A8 /* PlaybackPresenter.swift in Sources */,
 				00B42C232874BFE2000D90A8 /* SearchResultsViewController.swift in Sources */,
 				00B42C3F2881E6D4000D90A8 /* FeaturedPlaylistCollectionViewCell.swift in Sources */,
+				00B42E7B2896FCE8000D90A8 /* PlayerControlsView.swift in Sources */,
 				00B42C182874BEEE000D90A8 /* WelcomeViewController.swift in Sources */,
 				00B42C1C2874BF0D000D90A8 /* ProfileViewController.swift in Sources */,
 				00B42E6E2894466B000D90A8 /* CategoryCollectionViewCellViewModel.swift in Sources */,
