@@ -135,7 +135,6 @@ final class AuthManager {
     }
     
     
-    
     public func refreshIfNeeded(completion: @escaping (Bool) -> Void) {
         guard !refreshingToken else {
             return 

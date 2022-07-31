@@ -18,8 +18,17 @@ protocol PlayerControlsViewDelegate: AnyObject {
 struct PlayerControlsViewViewModel {
     let title: String?
     let subtitle: String?
+    
+    private let volumeSlider: UISlider = {
+        let slider = UISlider()
+        slider.value = 0.5
+        return slider
+    }()
 }
 
 final class PlayerControlsView: UIView {
     
+    private var isPlaying = true
+
+    weak var delegate: PlayerControlsViewDelegate?
 }
