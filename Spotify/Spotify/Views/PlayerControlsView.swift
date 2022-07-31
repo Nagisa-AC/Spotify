@@ -24,6 +24,23 @@ struct PlayerControlsViewViewModel {
         slider.value = 0.5
         return slider
     }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "This Is My Song"
+        label.numberOfLines = 1
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        return label
+    }()
+
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Drake (feat. Some Other Artist)"
+        label.numberOfLines = 1
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .secondaryLabel
+        return label
+    }()
 }
 
 final class PlayerControlsView: UIView {
