@@ -50,6 +50,7 @@
 		00B42E7628945111000D90A8 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00B42E7528945111000D90A8 /* SDWebImageSwiftUI */; };
 		00B42E792896FB99000D90A8 /* PlaybackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E782896FB99000D90A8 /* PlaybackPresenter.swift */; };
 		00B42E7B2896FCE8000D90A8 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E7A2896FCE8000D90A8 /* PlayerControlsView.swift */; };
+		00B42E7D289831F9000D90A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B42E7C289831F9000D90A8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		00B42E72289450AB000D90A8 /* SearchResultSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		00B42E782896FB99000D90A8 /* PlaybackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPresenter.swift; sourceTree = "<group>"; };
 		00B42E7A2896FCE8000D90A8 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		00B42E7C289831F9000D90A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				00B42BF82874B8B4000D90A8 /* SceneDelegate.swift */,
 				00B42BF62874B8B4000D90A8 /* AppDelegate.swift */,
 				00B42BFF2874B8B5000D90A8 /* Assets.xcassets */,
+				00B42E7C289831F9000D90A8 /* Extensions.swift */,
 			);
 			path = "Resources ";
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				00B42C1A2874BF01000D90A8 /* SettingsViewController.swift in Sources */,
 				00B42E6828907A7F000D90A8 /* AlbumDetailsResponse.swift in Sources */,
 				00B42E6A2891A10C000D90A8 /* PlaylistDetailsResponse.swift in Sources */,
+				00B42E7D289831F9000D90A8 /* Extensions.swift in Sources */,
 				00B42C3728809662000D90A8 /* Artist.swift in Sources */,
 				00B42C31287F4227000D90A8 /* UserProfile.swift in Sources */,
 				00B42C392881D30F000D90A8 /* FeaturedPlaylistResponse.swift in Sources */,
