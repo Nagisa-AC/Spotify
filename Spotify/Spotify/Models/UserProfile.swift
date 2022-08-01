@@ -18,5 +18,3 @@ struct UserProfile {
     let product: String
     let images: [APIImage]
 }
-
-
